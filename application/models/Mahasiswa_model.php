@@ -5,6 +5,11 @@ class Mahasiswa_model extends CI_Model
 {
    public function getAllMahasiswa()
    {
-      echo 'ok';
+      // https://www.codeigniter.com/user_guide/database/query_builder.html?highlight=query%20builder
+      $query = $this->db->get('t_mahasiswa');  // Produces: SELECT * FROM t_mahasiswa
+      return $query->result_array();
+
+      //bisa juga dengan method chaining
+      // return $this->db->get('t_mahasiswa')->result_array();
    }
 }
