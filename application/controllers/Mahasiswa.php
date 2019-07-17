@@ -14,7 +14,7 @@ class Mahasiswa extends CI_Controller
       //di dalam CI jangan lupa untuk load model sebelum digunakan!
 
       $data['judul'] = 'Data Mahasiswa';
-      $data['mahasiswa'] =  $this->Mahasiswa_model->getAllMahasiswa();
+      $data['mahasiswa'] = $this->Mahasiswa_model->getAllMahasiswa();
       $this->load->view('templates/header', $data);
       $this->load->view('mahasiswa/index');
       $this->load->view('templates/footer');
@@ -23,10 +23,7 @@ class Mahasiswa extends CI_Controller
 
    public function tambah()
    {
-      $this->load->model('Mahasiswa_model');
       $data['judul'] = 'Data Mahasiswa';
-      $data['mahasiswa'] =  $this->Mahasiswa_model->getAllMahasiswa();
-
       $this->form_validation->set_rules('nama', 'Nama', 'required');
       $this->form_validation->set_rules('nim', 'NIM', 'required|numeric');
       $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
@@ -35,7 +32,8 @@ class Mahasiswa extends CI_Controller
          $this->load->view('mahasiswa/index');
          $this->load->view('templates/footer');
       } else {
-         echo "berhasil";
+         $this->Mahasiswa_model->tambahDataMahasiswa();
+         redirect('mahasiswa'); //redirect dengan CI cukup memasukkan controller/method-nya
       }
    }
 }

@@ -12,4 +12,23 @@ class Mahasiswa_model extends CI_Model
       //bisa juga dengan method chaining
       // return $this->db->get('t_mahasiswa')->result_array();
    }
+
+   public function tambahDataMahasiswa()
+   {
+      //dengan menggunakan CI, kita tidak perlu lagi menambahkan seperti ini
+      /**
+       * htmlspecialchars($_POST['nama']) untuk melakukan cleaning pada data input dan mengamankan dari SQL Injection
+       * kita cukup gunakan 
+       * $this->input->post('nama',true)
+       */
+      $data = [
+         "nama" => $this->input->post('nama', true),
+         "nim" => $this->input->post('nim', true),
+         "email" => $this->input->post('email', true),
+         "jurusan" => $this->input->post('jurusan', true)
+      ];
+
+      //INSERT INTO t_mahasiswa VALUE $data
+      $this->db->insert('t_mahasiswa', $data);
+   }
 }
