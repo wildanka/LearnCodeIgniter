@@ -1,4 +1,16 @@
 <div class="container">
+   <?php if ($this->session->flashdata()) :  ?>
+      <div class="row mt-3">
+         <div class="col-md-6">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+               Data Mahasiswa <strong>Berhasil</strong> <?= $this->session->flashdata('data_mahasiswa'); ?>
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+         </div>
+      </div>
+   <?php endif; ?>
    <div class="row mt-4">
       <div class="col-md-6">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahDataMahasiswaModal">
@@ -11,8 +23,6 @@
          <?php endif; ?>
       </div>
    </div>
-</div>
-<div class="container">
    <div class="row mt-3">
       <div class="col-md-6">
          <h3>Daftar Mahasiswa</h3>

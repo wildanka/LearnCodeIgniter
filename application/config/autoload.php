@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 | [array('database') akan membuat database kita di load sejak awal aplikasi dijalankan, di satu sisi mudah, di sisi lain boros resource]
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database');
+$autoload['libraries'] = array('database', 'session');
 
 /*
 | -------------------------------------------------------------------
