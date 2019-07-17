@@ -27,10 +27,10 @@
                   <a class="nav-link" href="<?= base_url(); ?>">Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#">Mahasiswa</a>
+                  <a class="nav-link" href="<?= base_url(); ?>mahasiswa">Mahasiswa</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
+                  <a class="nav-link" href="<?= base_url(); ?>about">About</a>
                </li>
             </ul>
          </div>
