@@ -37,4 +37,11 @@ class Mahasiswa extends CI_Controller
          redirect('mahasiswa'); //redirect dengan CI cukup memasukkan controller/method-nya
       }
    }
+
+   public function hapus($id)
+   {
+      $this->Mahasiswa_model->hapusDataMahasiswa($id);
+      $this->session->set_flashdata('data_mahasiswa', 'dihapus');
+      redirect('mahasiswa'); //redirect dengan CI cukup memasukkan controller/method-nya
+   }
 }

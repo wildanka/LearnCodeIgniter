@@ -28,7 +28,11 @@
          <h3>Daftar Mahasiswa</h3>
          <ul class="list-group">
             <?php foreach ($mahasiswa as $mhs) : ?>
-               <li class="list-group-item"><?= $mhs['nama'] ?></li>
+               <li class="list-group-item">
+                  <?= $mhs['nama'] ?>
+                  <a href="<?= base_url(); ?>mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge badge-danger float-right" onclick="return confirm('Anda akan menghapus data <?= $mhs['nama'] ?>')"> Hapus</a> <!-- mahasiswa/hapus/<?= $mhs['id'] ?> (jika ada data yang akan dikirimkan) -->
+                  <!-- mahasiswa/hapus (jika tidak ada data yang akan dikirimkan) -->
+               </li>
             <?php endforeach ?>
          </ul>
       </div>
