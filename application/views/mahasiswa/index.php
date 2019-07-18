@@ -31,7 +31,7 @@
                <li class="list-group-item">
                   <?= $mhs['nama'] ?>
                   <a href="<?= base_url(); ?>mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge badge-danger float-right" onclick="return confirm('Anda akan menghapus data <?= $mhs['nama'] ?>')"> Hapus</a>
-                  <a href="<?= base_url(); ?>mahasiswa/lihat_detail/<?= $mhs['id'] ?>" class="badge badge-info float-right" onclick="return confirm('Anda akan menghapus data <?= $mhs['nama'] ?>')"> Lihat Detail</a>
+                  <a href="<?= base_url(); ?>mahasiswa/detail/<?= $mhs['id'] ?>" class="badge badge-info float-right"> Lihat Detail</a>
                   <a href="<?= base_url(); ?>mahasiswa/edit/<?= $mhs['id'] ?>" class="badge badge-warning float-right" onclick="return confirm('Anda akan menghapus data <?= $mhs['nama'] ?>')"> Ubah</a>
                   <!-- mahasiswa/hapus/< $mhs['id'] > (jika ada data yang akan dikirimkan) -->
                   <!-- mahasiswa/hapus (jika tidak ada data yang akan dikirimkan) -->

@@ -34,8 +34,16 @@ class Mahasiswa_model extends CI_Model
 
    public function hapusDataMahasiswa($id)
    {
-      $this->db->where('id', $id);
-      $this->db->delete('t_mahasiswa');
+      // $this->db->where('id', $id);
+      // $this->db->delete('t_mahasiswa');
       //DELETE FROM t_mahasiswa WHERE id='$id'
+      // Bisa Juga : 
+      $this->db->delete('t_mahasiswa', ['id' => $id]);
+   }
+
+   public function getDetailMahasiswaById($id)
+   {
+      // Produces: SELECT * FROM t_mahasiswa WHERE id = $id
+      return $this->db->get_where('t_mahasiswa', ['id' => $id])->row_array(); //bisa juga dengan row(), tapi hasil returnnya nanti Object, bukan array
    }
 }
