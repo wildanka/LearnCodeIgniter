@@ -7,8 +7,8 @@
                <h6 class="card-subtitle mb-2 text-muted"><?= $detail_mahasiswa['nim']; ?></h6>
                <p class="card-text"><?= $detail_mahasiswa['email']; ?></p>
                <p class="card-text"><?= $detail_mahasiswa['jurusan']; ?></p>
-               <a href="#" class="card-link">Card link</a>
-               <a href="#" class="card-link">Another link</a>
+               <a href="<?= base_url() ?>mahasiswa" class="card-link">Back</a>
+               <!-- <a href="#" class="card-link">Another link</a> -->
             </div>
          </div>
       </div>

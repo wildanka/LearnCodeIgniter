@@ -52,4 +52,10 @@ class Mahasiswa extends CI_Controller
       $this->load->view('mahasiswa/detail', $data);
       $this->load->view('templates/footer');
    }
+
+
+   public function get_detail_to_update()
+   {
+      echo json_encode($this->Mahasiswa_model->getDetailMahasiswaById($_POST['id']));
+   }
 }
