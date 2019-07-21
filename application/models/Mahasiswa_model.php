@@ -68,4 +68,19 @@ class Mahasiswa_model extends CI_Model
       $this->db->where('id', $this->input->post('id'));
       $this->db->update('t_mahasiswa', $data);
    }
+
+   public function cariDataMahasiswa()
+   {
+      // https://www.codeigniter.com/user_guide/database/query_builder.html?highlight=query%20builder
+      $keyword = $this->input->post('keyword', true);
+
+      $this->db->like('nim', $keyword); // nim LIKE $keyword
+      $this->db->or_like('nama', $keyword); // or nama LIKE $keyword
+      $this->db->or_like('jurusan', $keyword); // or jurusan LIKE $keyword
+      $this->db->or_like('email', $keyword); // or email LIKE $keyword
+      return $this->db->get('t_mahasiswa')->result_array();
+      // Produces: SELECT * FROM t_mahasiswa WHERE nim LIKE $keyword OR nama LIKE $keyword OR jurusan LIKE $keyword or email LIKE $keyword
+
+
+   }
 }

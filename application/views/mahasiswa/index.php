@@ -20,7 +20,29 @@
    </div>
    <div class="row mt-3">
       <div class="col-md-6">
+         <form action="" method="post">
+            <!-- form action="" berarti ketika form disubmit maka data akan dikirimkan ke halaman itu sendiri-->
+            <div class="input-group mb-3">
+               <input type="text" class="form-control" placeholder="Cari NIM atau Nama Mahasiswa" aria-label="Recipient's username" aria-describedby="button-cari" class="keyword" id="keyword" name="keyword">
+               <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit" id="button-cari">Cari</button>
+               </div>
+            </div>
+
+      </div>
+   </div>
+   <div class="row mt-3">
+      <div class="col-md-6">
          <h3>Daftar Mahasiswa</h3>
+         <?php if (empty($mahasiswa)) : ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+               Data mahasiswa tidak ditemukan.
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+         <?php endif; ?>
+
          <ul class="list-group">
             <?php foreach ($mahasiswa as $mhs) : ?>
                <li class="list-group-item">

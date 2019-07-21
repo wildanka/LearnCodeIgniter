@@ -14,6 +14,9 @@ class Mahasiswa extends CI_Controller
       //di dalam CI jangan lupa untuk load model sebelum digunakan!
       $data['judul'] = 'Data Mahasiswa';
       $data['mahasiswa'] = $this->Mahasiswa_model->getAllMahasiswa();
+      if ($this->input->post('keyword')) {
+         $data['mahasiswa'] = $this->Mahasiswa_model->cariDataMahasiswa();
+      }
       $this->load->view('templates/header', $data);
       $this->load->view('mahasiswa/index');
       $this->load->view('templates/footer');
@@ -68,6 +71,24 @@ class Mahasiswa extends CI_Controller
          $this->load->view('templates/footer');
       } else {
          $this->Mahasiswa_model->ubahDataMahasiswa();
+         $this->session->set_flashdata('data_mahasiswa', 'Diubah');
+         redirect('mahasiswa'); //redirect dengan CI cukup memasukkan controller/method-nya
+      }
+   }
+
+
+   public function cari()
+   {
+      $data['judul'] = 'Data Mahasiswa';
+      $this->form_validation->set_rules('nama', 'Nama', 'required');
+      $this->form_validation->set_rules('nim', 'NIM', 'required|numeric');
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+      if ($this->form_validation->run() == FALSE) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('mahasiswa/index', $data);
+         $this->load->view('templates/footer');
+      } else {
+         $this->Mahasiswa_model->cariDataMahasiswa();
          $this->session->set_flashdata('data_mahasiswa', 'Diubah');
          redirect('mahasiswa'); //redirect dengan CI cukup memasukkan controller/method-nya
       }
