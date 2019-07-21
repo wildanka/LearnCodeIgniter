@@ -46,4 +46,26 @@ class Mahasiswa_model extends CI_Model
       // Produces: SELECT * FROM t_mahasiswa WHERE id = $id
       return $this->db->get_where('t_mahasiswa', ['id' => $id])->row_array(); //bisa juga dengan row(), tapi hasil returnnya nanti Object, bukan array
    }
+
+   public function ubahDataMahasiswa()
+   {
+      //dengan menggunakan CI, kita tidak perlu lagi menambahkan seperti ini
+      /**
+       * htmlspecialchars($_POST['nama']) untuk melakukan cleaning pada data input dan mengamankan dari SQL Injection
+       * kita cukup gunakan 
+       * $this->input->post('nama',true)
+       */
+      $data = [
+         "nama" => $this->input->post('nama', true),
+         "nim" => $this->input->post('nim', true),
+         "email" => $this->input->post('email', true),
+         "jurusan" => $this->input->post('jurusan', true)
+      ];
+
+      // UPDATE t_mahasiswa
+      // SET nama = '{$nama}', nim = '{$nim}', email = '{$email}', jurusan = '{$jurusan}'
+      // VALUE $data WHERE id
+      $this->db->where('id', $this->input->post('id'));
+      $this->db->update('t_mahasiswa', $data);
+   }
 }

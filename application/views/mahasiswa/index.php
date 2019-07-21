@@ -16,11 +16,6 @@
          <button type="button" class="btn btn-primary" data-toggle="modal" id="tampilModalTambah" data-target="#dataMahasiswaModal">
             Tambah Data Mahasiswa
          </button>
-         <?php if (validation_errors()) : ?>
-            <div class="alert alert-danger" role="alert">
-               <?= validation_errors(); ?>
-            </div>
-         <?php endif; ?>
       </div>
    </div>
    <div class="row mt-3">
@@ -60,15 +55,17 @@
                <div class="form-group">
                   <label for="inputNama">Nama Mahasiswa</label>
                   <input type="text" class="form-control" id="inputNama" placeholder="Masukkan Nama Mahasiswa" name="nama">
+                  <small class="form-text text-danger"><?= form_error('nama'); ?></small>
                </div>
                <div class="form-group">
                   <label for="inputNIM">NIM</label>
                   <input type="number" class="form-control" id="inputNIM" placeholder="Masukkan NIM Mahasiswa" name="nim">
+                  <small class="form-text text-danger"><?= form_error('nim'); ?></small>
                </div>
                <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Masukkan Alamat Email" name="email">
-                  <small id="emailHelp" class="form-text text-muted">Kami tidak akan membagikan alamat email Anda kepada orang lain.</small>
+                  <small id="emailHelp" class="form-text text-muted"><?= form_error('email'); ?></small>
                </div>
                <div class="form-group">
                   <label for="selectJurusan">Jurusan</label>

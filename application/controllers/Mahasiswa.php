@@ -27,9 +27,7 @@ class Mahasiswa extends CI_Controller
       $this->form_validation->set_rules('nim', 'NIM', 'required|numeric');
       $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
       if ($this->form_validation->run() == FALSE) {
-         $this->load->view('templates/header', $data);
-         $this->load->view('mahasiswa/index');
-         $this->load->view('templates/footer');
+         $this->index();
       } else {
          $this->Mahasiswa_model->tambahDataMahasiswa();
          $this->session->set_flashdata('data_mahasiswa', 'Ditambahkan');
@@ -53,9 +51,25 @@ class Mahasiswa extends CI_Controller
       $this->load->view('templates/footer');
    }
 
-
    public function get_detail_to_update()
    {
       echo json_encode($this->Mahasiswa_model->getDetailMahasiswaById($_POST['id']));
+   }
+
+   public function ubah()
+   {
+      $data['judul'] = 'Data Mahasiswa';
+      $this->form_validation->set_rules('nama', 'Nama', 'required');
+      $this->form_validation->set_rules('nim', 'NIM', 'required|numeric');
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+      if ($this->form_validation->run() == FALSE) {
+         $this->load->view('templates/header', $data);
+         $this->load->view('mahasiswa/index', $data);
+         $this->load->view('templates/footer');
+      } else {
+         $this->Mahasiswa_model->ubahDataMahasiswa();
+         $this->session->set_flashdata('data_mahasiswa', 'Diubah');
+         redirect('mahasiswa'); //redirect dengan CI cukup memasukkan controller/method-nya
+      }
    }
 }

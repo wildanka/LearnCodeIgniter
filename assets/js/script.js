@@ -16,6 +16,11 @@ $(function() {
 		console.log('id tampilModalUbah di klik');
 		$('#dataMahasiswaModalLabel').html('Ubah Data Mahasiswa');
 		$('.modal-footer button[type=submit]').html('Ubah Data');
+		//sekarang kita merubah action dari button pada form ketika di hit maka akan memanggil PHP untuk merubah data, bukan menambah
+		$('.modal-body form').attr(
+			'action',
+			'http://localhost/ci_app/mahasiswa/ubah'
+		);
 
 		//get data detail mahasiswa
 		const id = $(this).data('id');
